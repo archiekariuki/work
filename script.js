@@ -1,9 +1,37 @@
-/* Vowels Function */
-function vowels(str){
-    const matches = str.match(/[aeiou]/gi);
-    return matches ? matches.length : 0;
+function memoize(fn){
+    
+    const cache = {};
+
+     return function(...args){
+         if(cache[args]){
+             return cache[args];
+         }
+         const result = fn.apply(this,args);
+         cache[args] = result;
+
+         return result;
+     };
 }
-console.log(vowels('Hello There'));
+
+function fib(n){
+    if(n < 2){
+        return n;
+    }
+
+    return fib(n-1) + fib(n-2);
+}
+
+const last = memoize(fib);
+
+console.log(last(6));
+
+
+/* Vowels Function */
+// function vowels(str){
+//     const matches = str.match(/[aeiou]/gi);
+//     return matches ? matches.length : 0;
+// }
+// console.log(vowels('Hello There'));
 
 
 
