@@ -17,3 +17,10 @@ class Queue {
     }
 
 }
+
+const q = new Queue();
+
+q.add(10);
+q.add(20);
+
+console.log(q);
